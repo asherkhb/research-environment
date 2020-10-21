@@ -25,11 +25,19 @@ def applications_by_id(application_id):
         return jsonify(f'Instance Info for {application_id}')
 
 
-@app.route('/datasets')
+@app.route('/datasets', methods=['GET', 'POST'])
 def datasets():
-    return jsonify('Method Coming Soon!')
+    if request.method == 'POST':
+        return jsonify(f'Create Dataset')
+    else:
+        return jsonify(f'List Datasets')
 
 
-@app.route('/datasets/<dataset_id>')
+@app.route('/datasets/<dataset_id>', methods=['GET', 'POST', 'DELETE'])
 def datasets_by_id(dataset_id):
-    return jsonify('Method Coming Soon!')
+    if request.method == 'POST':
+        return jsonify(f'Update Dataset {dataset_id}')
+    elif request.method == 'DELETE':
+        return jsonify(f'Delete Dataset {dataset_id}')
+    else:
+        return jsonify(f'Dataset Info for {dataset_id}')
