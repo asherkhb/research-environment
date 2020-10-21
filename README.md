@@ -1,18 +1,17 @@
 # Research Environment
 
-Research Environment provisions cloud resources for scientific research. 
+A cloud-based infrastructure environment to power scientific research.
 
-A front-end application ("client") provides a user-friendly interface for requesing and accessing
-resources, while a back-end application ("server") provides an API for provisioning and managing resources.
-
-Currently, AWS is the only supported cloud provider.
+Research Environment (RE), is composed of two major components:
+- __client__ - A front-end application to provide a user-friendly interface for requesing and accessing resources.
+- __server__ - A back-end API to provision and manage resources.
 
 ## Quick Start
 
-Docker makes launching the environment simple,
+[Docker](https://docs.docker.com/) makes launching a local copy of research-environment simple,
 
 ```
-$ git clone $REPO
+$ git clone git@github.com:asherkhb/research-environment.git
 $ cd research-environment
 $ docker-compose up
 ```
