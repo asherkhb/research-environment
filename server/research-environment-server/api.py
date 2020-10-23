@@ -1,4 +1,7 @@
 from flask import Flask, jsonify, request
+from applications import *
+from datasets import *
+
 app = Flask(__name__)
 
 
@@ -10,34 +13,34 @@ def hello_world():
 @app.route('/applications', methods=['GET', 'POST'])
 def applications():
     if request.method == 'POST':
-        return jsonify(f'Launch Instance')
+        return launch_application()
     else:
-        return jsonify(f'List Instance')
+        return list_applications()
 
 
 @app.route('/applications/<application_id>', methods=['GET', 'POST', 'DELETE'])
 def applications_by_id(application_id):
     if request.method == 'POST':
-        return jsonify(f'Update Instance {application_id}')
+        return update_application(application_id)
     elif request.method == 'DELETE':
-        return jsonify(f'Delete Instance {application_id}')
+        return delete_application(application_id)
     else:
-        return jsonify(f'Instance Info for {application_id}')
+        return describe_application(application_id)
 
 
 @app.route('/datasets', methods=['GET', 'POST'])
 def datasets():
     if request.method == 'POST':
-        return jsonify(f'Create Dataset')
+        return create_dataset()
     else:
-        return jsonify(f'List Datasets')
+        return list_datasets()
 
 
 @app.route('/datasets/<dataset_id>', methods=['GET', 'POST', 'DELETE'])
 def datasets_by_id(dataset_id):
     if request.method == 'POST':
-        return jsonify(f'Update Dataset {dataset_id}')
+        return update_dataset(dataset_id)
     elif request.method == 'DELETE':
-        return jsonify(f'Delete Dataset {dataset_id}')
+        return delete_dataset(dataset_id)
     else:
-        return jsonify(f'Dataset Info for {dataset_id}')
+        return describe_dataset(dataset_id)
